@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7743229054858140824}
   - component: {fileID: 5859668262686511912}
   - component: {fileID: -7946839659907101063}
-  - component: {fileID: 4871473189449739836}
   - component: {fileID: -209888863615349731}
+  - component: {fileID: 5688393272747701209}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -100,24 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: -209888863615349731}
---- !u!143 &4871473189449739836
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3847548186425804003}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0.75
-  m_Radius: 0.53125
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-209888863615349731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +112,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af3545ccf82ae744b609c418f957be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 5688393272747701209}
   player: {fileID: -7946839659907101063}
-  controller: {fileID: 4871473189449739836}
-  gravity: -25
-  jumpHeight: 2
+  jumpSpeed: 1
+--- !u!50 &5688393272747701209
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847548186425804003}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

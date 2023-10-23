@@ -9,6 +9,10 @@ public enum ServerToClientId : ushort
 {
     PlayerSpawned = 0,
     PlayerMovement = 1,
+    WallMovement = 2,
+    WallDestroyed = 3,
+    WallSpawned = 4,
+    GroundMove = 5,
 }
 
 public enum ClientToServerId : ushort
@@ -16,7 +20,6 @@ public enum ClientToServerId : ushort
     Name = 0,
     Input = 1,
 }
-
 
 public class NetworkManager : Singleton<NetworkManager>
 {

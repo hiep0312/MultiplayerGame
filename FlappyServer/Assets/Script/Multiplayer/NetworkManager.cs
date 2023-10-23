@@ -9,6 +9,10 @@ public enum ServerToClientId : ushort
 {
     PlayerSpawned = 0,
     PlayerMovement = 1,
+    WallMovement = 2,
+    WallDestroyed = 3,
+    WallSpawned = 4,
+    GroundMove = 5,
 }
 
 public enum ClientToServerId : ushort
@@ -40,7 +44,13 @@ public class NetworkManager : Singleton<NetworkManager>
     private void OnClientDisconnect(object sender, ServerDisconnectedEventArgs e)
     {
         if (Player.list.TryGetValue(e.Client.Id, out Player player))
+        {
             Destroy(player.gameObject);
+            if (Player.list.Count == 0)
+            {
+                Spawner.Instance.DeleteAll();
+            }
+        }
     }
 
     private void OnClientConnect(object sender, ServerConnectedEventArgs e)
