@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (input)
         {
+            rb.velocity = Vector2.zero;
             rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             input = false;
         }

@@ -8,20 +8,31 @@ public class PlayerController : MonoBehaviour
 {
     private bool input;
 
+    private void Start()
+    {
+        this.RegisterListener(EventID.Input, Jump);
+    }
+
+    private void OnDestroy()
+    {
+        this.RemoveListener(EventID.Input, Jump);
+    }
+
+    public void Jump(object obj)
+    {
+        input = true;
+    }
+
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             input = true;
+            SendInput();
+            input = false;
         }
     }
-
-    private void FixedUpdate()
-    {
-        SendInput();
-
-        input = false;
-    }
+    
 
     #region Messages
 
@@ -34,4 +45,6 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+    
+    
 }
