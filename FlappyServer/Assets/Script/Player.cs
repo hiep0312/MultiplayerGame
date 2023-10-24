@@ -9,9 +9,16 @@ public class Player : MonoBehaviour
 
     public ushort Id { get; private set; }
     public string Username { get; private set; }
+    
+    public bool IsAlive { get; set; }
     public PlayerMovement Movement => movement;
 
     [SerializeField] private PlayerMovement movement;
+
+    private void Start()
+    {
+        IsAlive = true;
+    }
 
     private void OnDestroy()
     {
@@ -35,6 +42,16 @@ public class Player : MonoBehaviour
 
         player.SendSpawned();
         list.Add(id, player);
+    }
+
+    public static bool CheckPlayerRemain()
+    {
+        foreach (ushort key in list.Keys)
+        {
+            if (list[key].IsAlive) return true;
+        }
+
+        return false;
     }
 
     #region Message Handler

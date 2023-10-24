@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     // List player in server
     public static Dictionary<ushort, Player> list = new Dictionary<ushort, Player>();
 
+    public bool IsAlive { get; set; }
+    
     public ushort Id { get; private set; }
     public bool IsLocal { get; private set; }
 
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
             player.IsLocal = false;
         }
         
+        player.IsAlive = true;
         player.name = $"Player {id} (username)";
         player.Id = id;
         player.username = username;
@@ -60,5 +63,14 @@ public class Player : MonoBehaviour
             player.Move(message.GetVector3());
     }
 
+    [MessageHandler((ushort)ServerToClientId.CollideWithWall)]
+    private static void PlayerDead(Message message)
+    {
+        if (list.TryGetValue(message.GetUShort(), out Player player))
+        {
+            player.IsAlive = message.GetBool();
+        }
+    }
+    
     #endregion
 }

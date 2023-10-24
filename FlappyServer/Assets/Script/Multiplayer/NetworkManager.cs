@@ -13,6 +13,7 @@ public enum ServerToClientId : ushort
     WallDestroyed = 3,
     WallSpawned = 4,
     GroundMove = 5,
+    CollideWithWall = 6,
 }
 
 public enum ClientToServerId : ushort

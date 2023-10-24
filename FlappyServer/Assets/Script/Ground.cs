@@ -16,6 +16,7 @@ public class Ground : MonoBehaviour
 
     private void Update()
     {
+        if (!GameLogic.IsPlaying) return;
         transform.position -= speed * Time.deltaTime * Vector3.right;
         if (transform.position.x < 0) transform.position = _startPos;
     }

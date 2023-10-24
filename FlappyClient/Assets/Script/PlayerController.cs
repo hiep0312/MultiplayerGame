@@ -6,25 +6,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Player _player;
+    
     private bool input;
 
     private void Start()
     {
-        this.RegisterListener(EventID.Input, Jump);
-    }
-
-    private void OnDestroy()
-    {
-        this.RemoveListener(EventID.Input, Jump);
-    }
-
-    public void Jump(object obj)
-    {
-        input = true;
+        _player = GetComponent<Player>();
     }
 
     private void Update()
     {
+        if (!_player.IsAlive) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             input = true;

@@ -24,6 +24,7 @@ public class WallMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!GameLogic.IsPlaying) return;
         transform.position -= Vector3.right * (speed * Time.deltaTime);
         if (transform.position.x < boundary)
         {
